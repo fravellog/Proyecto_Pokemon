@@ -36,5 +36,7 @@ namespace Pokedex.Controllers
         Pokemon sandshrew = new Pokemon("sandshrew", 100, "tierra");
         sandshrew.agregarAtaque(terremoto);
         sandshrew.agregarAtaque(rasguño);
+
+        //Proceso de prueba de metodo "agregarAtaque"
     }
 }
