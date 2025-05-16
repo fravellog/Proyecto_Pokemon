@@ -11,7 +11,7 @@ namespace Pokedex.Models
         }
         public void agregarPokemon(Pokemon pokemon) 
         {
-            if (Equipo.Count < 3) 
+            if (Equipo.Count < 1) 
             {
                 Equipo.Add(pokemon);
             }

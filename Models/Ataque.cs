@@ -3,8 +3,8 @@ namespace Pokedex.Models
 
     public class Ataque 
     {
-        string Nombre;
-        string Efecto;
+        public string Nombre;
+        public string Tipo;
 
         public Ataque (string nombre, string tipo) 
         {
