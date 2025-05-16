@@ -1,8 +1,11 @@
 using Pokedex.Models;
+using Pokedex.Views;
 
 namespace Pokedex.Controllers
 {
-    public class Objeto 
+    private Pokemon _pokemon;
+    private Pokemon pokemonView;
+    public class Objeto
     {
         //Creacion de objetos de las habilidades pokemon
         Ataque lanzallama = new Ataque("lanzallama", "fuego");
@@ -37,6 +40,6 @@ namespace Pokedex.Controllers
         sandshrew.agregarAtaque(terremoto);
         sandshrew.agregarAtaque(rasguño);
 
-        //Proceso de prueba de metodo "agregarAtaque"
+        //Prueba de ataques
     }
 }
