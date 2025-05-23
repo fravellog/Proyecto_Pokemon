@@ -9,52 +9,52 @@ namespace Pokedex.Data
         {
             return new List<Pokemon>
             {
-                new Pokemon("charmander", "fuego",100)
+                new Pokemon("charmander", 200, TipoNaturaleza.Fuego)
                 {
                     Ataques = new List<Ataque>
                     {
-                        new Ataque("lanzallama", "fuego"),
-                        new Ataque("cuchillada", "normal")
+                        new Ataque("lanzallama", 20, TipoNaturaleza.Fuego),
+                        new Ataque("cuchillada", 10, TipoNaturaleza.Normal)
                     }
                 },
-                new Pokemon("squirtle", "agua", 100)
+                new Pokemon("squirtle", 200, TipoNaturaleza.Agua)
                 {
                     Ataques = new List<Ataque>
                     {
-                        new Ataque("pistola agua", "agua"),
-                        new Ataque("latigo", "normal")
+                        new Ataque("pistola agua", 20, TipoNaturaleza.Agua),
+                        new Ataque("latigo", 10, TipoNaturaleza.Normal)
                     }
                 },
-                new Pokemon("", "planta", 100)
+                new Pokemon("bulbasaur", 200, TipoNaturaleza.Planta)
                 {
                     Ataques = new List<Ataque>
                     {
-                        new Ataque("latigo cepa", "planta"),
-                        new Ataque("placaje", "normal")
+                        new Ataque("latigo cepa", 20, TipoNaturaleza.Planta),
+                        new Ataque("placaje", 10, TipoNaturaleza.Normal)
                     }
                 },
-                new Pokemon("flareon", "fuego", 100)
+                new Pokemon("flareon", 200, TipoNaturaleza.Fuego)
                 {
                     Ataques = new List<Ataque>
                     {
-                        new Ataque("colmillo de fuego", "fuego"),
-                        new Ataque("derribar", "normal")
+                        new Ataque("colmillo de fuego", 20, TipoNaturaleza.Fuego),
+                        new Ataque("derribar", 10, TipoNaturaleza.Normal)
                     }
                 },
-                new Pokemon("sandshrew", "tierra", 100)
+                new Pokemon("sandshrew", 200, TipoNaturaleza.Tierra)
                 {
                     Ataques = new List<Ataque>
                     {
-                        new Ataque("terremoto", "tierra"),
-                        new Ataque("rasguño", "normal")
+                        new Ataque("terremoto", 20, TipoNaturaleza.Tierra),
+                        new Ataque("rasguño", 10, TipoNaturaleza.Normal)
                     }
                 },
-                new Pokemon("jolteon", "electrico", 100)
+                new Pokemon("jolteon", 200, TipoNaturaleza.Electrico)
                 {
                     Ataques = new List<Ataque>
                     {
-                        new Ataque("onda de trueno", "electrico"),
-                        new Ataque("ataque rapido", "normal")
+                        new Ataque("onda de trueno", 20, TipoNaturaleza.Electrico),
+                        new Ataque("ataque rapido", 10, TipoNaturaleza.Normal)
                     }
                 }
 

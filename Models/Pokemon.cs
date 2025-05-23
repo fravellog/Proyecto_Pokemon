@@ -3,14 +3,14 @@ namespace Pokedex.Models
     public class Pokemon
     {
         public string Nombre { get; set; }
-        public string Tipo { get; set; }
-        public int HP { get; set; }
+        public double HP { get; set; }
+        public TipoNaturaleza Tipo { get; set; }
         public List<Ataque> Ataques { get; set; } = new List<Ataque>();
-        public Pokemon(string nombre, string tipo, int hp)
+        public Pokemon(string nombre, double hp, TipoNaturaleza tipo)
         {
             Nombre = nombre;
-            Tipo = tipo;
             HP = hp;
+            Tipo = tipo;
             Ataques = new List<Ataque>();
         }
         public void agregarAtaque(Ataque ataque)
