@@ -9,6 +9,7 @@ namespace Pokedex.Controllers
     {
         public static void BatallaPokemon(Entrenador entrenador,Pokemon aliado, Pokemon enemigo)
         {
+            //Seleccionar Pokemon antes de la batalla
             //Presentacion de la batalla
             AsciiView.Textos(1);
             Console.WriteLine(@$"¡LA BATALLA HA COMENZADO!
@@ -91,46 +92,55 @@ namespace Pokedex.Controllers
                     // Se aplica el daño a los Pokémon
                     enemigo.HP -= potenciaAliado;
                     AtaqueView.AtaqueVista(aliado.Ataques[seleccionAtaque]);
+                    AtaqueView.AtaqueVista(enemigo.Ataques[seleccionAtaque]);
                     Console.WriteLine($"{aliado.Nombre} ataca a {enemigo.Nombre} con {aliado.Ataques[seleccionAtaque].Nombre}!");
                     Console.WriteLine($"{enemigo.Nombre} recibe {potenciaAliado} de daño!!");
                     ConsolaUtil.EsperaryLimpiar();
                 }
                 else if (opcion == 2)
                 {
-                    AsciiView.Textos(6);
-                    // Si el usuario elige usar una poción, se muestra la lista de pociones
-                    Console.WriteLine("Selecciona una pocion!");
-                    Console.WriteLine();
-                    for (int i = 0; i < PocionData.Pociones.Count; i++)
+                    if (entrenador.Pociones.Count == 0)
                     {
-                        Console.WriteLine($"{i + 1}. {PocionData.Pociones[i].Nombre} - {PocionData.Pociones[i].TipoEfecto}");
-                        Console.WriteLine("");
-                    }
-
-                    try
-                    {
-                        // Se selecciona la poción
-                        int seleccionPocion = int.Parse(Console.ReadLine()) - 1;
-
-                        // Se valida la selección de la poción
-                        var pocionSeleccionada = PocionData.Pociones[seleccionPocion];
-                        aliado.HP += pocionSeleccionada.Efecto;
-                        Console.WriteLine($"{aliado.Nombre} ha usado {pocionSeleccionada.Nombre} y ha recuperado {pocionSeleccionada.Efecto} puntos de vida!");
-                        entrenador.Pociones.Remove(pocionSeleccionada);
-                        Console.WriteLine($"Pociones restantes: {entrenador.Pociones.Count}");
-                        ConsolaUtil.EsperaryLimpiar();
-                    }
-                    catch (FormatException)
-                    {
-                        // Si la entrada no es un número, se muestra un mensaje de error
-                        Console.WriteLine("Por favor, ingrese un número válido.");
+                        // Si el entrenador no tiene pociones, se muestra un mensaje
+                        Console.WriteLine("No tienes pociones para usar!");
                         continue;
                     }
-                    catch (ArgumentOutOfRangeException)
+                    else
                     {
-                        // Si el número está fuera de rango, se muestra un mensaje de error
-                        Console.WriteLine("Por favor, seleccione una poción válida.");
-                        continue;
+                        AsciiView.Textos(6);
+                        // Si el usuario elige usar una poción, se muestra la lista de pociones
+                        Console.WriteLine("Selecciona una pocion!");
+                        Console.WriteLine();
+                        for (int i = 0; i < entrenador.Pociones.Count; i++)
+                        {
+                            Console.WriteLine($"{i + 1}. {entrenador.Pociones[i].Nombre} - Efecto: {entrenador.Pociones[i].Efecto}");
+                        }
+
+                        try
+                        {
+                            // Se selecciona la poción
+                            int seleccionPocion = int.Parse(Console.ReadLine()) - 1;
+
+                            // Se valida la selección de la poción
+                            var pocionSeleccionada = PocionData.Pociones[seleccionPocion];
+                            aliado.HP += pocionSeleccionada.Efecto;
+                            Console.WriteLine($"{aliado.Nombre} ha usado {pocionSeleccionada.Nombre} y ha recuperado {pocionSeleccionada.Efecto} puntos de vida!");
+                            entrenador.Pociones.Remove(pocionSeleccionada);
+                            Console.WriteLine($"Pociones restantes: {entrenador.Pociones.Count}");
+                            ConsolaUtil.EsperaryLimpiar();
+                        }
+                        catch (FormatException)
+                        {
+                            // Si la entrada no es un número, se muestra un mensaje de error
+                            Console.WriteLine("Por favor, ingrese un número válido.");
+                            continue;
+                        }
+                        catch (ArgumentOutOfRangeException)
+                        {
+                            // Si el número está fuera de rango, se muestra un mensaje de error
+                            Console.WriteLine("Por favor, seleccione una poción válida.");
+                            continue;
+                        }
                     }
                 }
                 else if (opcion == 3)
