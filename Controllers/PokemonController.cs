@@ -42,7 +42,7 @@ namespace Pokedex.Controllers
                     continue;
                     
                 }
-                PokemonView.VerPokemon(seleccionPokemon + 1);
+                PokemonView.VerPokemon(PokemonData.ListaPokemon()[seleccionPokemon]);
                 PokemonData.ListaPokemon()[seleccionPokemon].MostrarPokemon();
                 Console.WriteLine("¿Es correcto? (S/N)");
                 string confirmacion = Console.ReadLine();

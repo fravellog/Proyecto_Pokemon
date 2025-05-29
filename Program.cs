@@ -59,7 +59,7 @@ while (true)
             var ListaPokemon = PokemonData.ListaPokemon();
             int pokemonAleatorio = new Random().Next(ListaPokemon.Count);
             Pokemon enemigo = ListaPokemon[pokemonAleatorio];
-            PokemonView.VerPokemon(pokemonAleatorio + 1);
+            PokemonView.VerPokemon(enemigo);
             enemigo.MostrarPokemon();
             ConsolaUtil.EsperaryLimpiar();
             while (true)

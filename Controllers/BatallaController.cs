@@ -92,7 +92,6 @@ namespace Pokedex.Controllers
                     // Se aplica el daño a los Pokémon
                     enemigo.HP -= potenciaAliado;
                     AtaqueView.AtaqueVista(aliado.Ataques[seleccionAtaque]);
-                    AtaqueView.AtaqueVista(enemigo.Ataques[seleccionAtaque]);
                     Console.WriteLine($"{aliado.Nombre} ataca a {enemigo.Nombre} con {aliado.Ataques[seleccionAtaque].Nombre}!");
                     Console.WriteLine($"{enemigo.Nombre} recibe {potenciaAliado} de daño!!");
                     ConsolaUtil.EsperaryLimpiar();
