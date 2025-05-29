@@ -1,9 +1,13 @@
-# Example headings
+# Bienvenido jugador!
 
-## Sample Section
+## Aqui estan las instrucciones sobre como jugar Pokemon desde Visual Studio Code!
 
-## This'll be a _Helpful_ Section About the Greek Letter Θ!
-A heading containing characters not allowed in fragments, UTF-8 characters, two consecutive spaces between the first and second words, and formatting.
+## Para esto, puedes seguir los siguientes pasos:
+1. Abre el terminal de Visual Studio Code
+
+2. En el terminal, escribe el comando "dotnet run" sin las comillas
+
+3. Disfrute de su partida
 
 ## This heading is not unique in the file
 
