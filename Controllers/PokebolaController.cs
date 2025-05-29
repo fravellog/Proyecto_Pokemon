@@ -27,7 +27,7 @@ namespace Pokedex.Controllers
                     seleccionPokebola = int.Parse(Console.ReadLine()) - 1;
                     if (seleccionPokebola < 0 || seleccionPokebola > PokebolaData.Pokebolas.Count - 1)
                     {
-                        if (seleccionPokebola == 4)
+                        if (seleccionPokebola == 5)
                         {
                             Console.WriteLine("¡Gracias por visitar la tienda de Pokebolas!");
                             ConsolaUtil.EsperaryLimpiar();
