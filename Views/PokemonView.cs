@@ -1,6 +1,6 @@
 namespace Pokedex.Views
 {
-    public class Pokemones
+    public class PokemonView
     {
         
         public static string VerPokemon(int pokemon)

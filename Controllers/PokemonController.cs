@@ -9,6 +9,7 @@ namespace Pokedex.Controllers
     {
         public void pokemonInicial(Entrenador entrenador)
         {
+            Console.Clear();
             AsciiView.Textos(3);
             Console.WriteLine("¡Muy bien, es momento de elegir tu pokemon inicial!");
             while (true)
@@ -23,6 +24,12 @@ namespace Pokedex.Controllers
                 try
                 {
                     seleccionPokemon = int.Parse(Console.ReadLine()) - 1;
+                    if (seleccionPokemon+1 < 0 || seleccionPokemon+1 > 3)
+                    {
+                        Console.WriteLine("Por favor, seleccione un pokemon válido.");
+                        continue;
+                    }
+
                 }
                 catch (FormatException)
                 {
@@ -31,12 +38,11 @@ namespace Pokedex.Controllers
                 }
                 catch (ArgumentOutOfRangeException)
                 {
-                    if (seleccionPokemon < 0 || seleccionPokemon > 3)
-                    {
-                        Console.WriteLine("Por favor, seleccione un pokemon válido.");
-                        continue;
-                    }
+                    Console.WriteLine("Por favor, seleccione un pokemon válido.");
+                    continue;
+                    
                 }
+                PokemonView.VerPokemon(seleccionPokemon + 1);
                 PokemonData.ListaPokemon()[seleccionPokemon].MostrarPokemon();
                 Console.WriteLine("¿Es correcto? (S/N)");
                 string confirmacion = Console.ReadLine();

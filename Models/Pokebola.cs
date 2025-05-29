@@ -12,5 +12,10 @@ namespace Pokedex.Models
             Tipo = tipo;
             EfectoCaptura = efectoCaptura;
         }
+        public void MostrarPokebola()
+        {
+            Console.WriteLine($"Nombre: {Nombre}");
+            Console.WriteLine($"Tipo: {Tipo}");
+        }
     }
 }
