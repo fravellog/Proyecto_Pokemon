@@ -13,6 +13,11 @@ namespace Pokedex.Models
             Pociones = new List<Pocion>();
             Equipo = new List<Pokemon>();
         }
+        public Entrenador()
+        {
+            Pociones = new List<Pocion>();
+            Equipo = new List<Pokemon>();
+        }
         public void agregarPokemon(Pokemon pokemon)
         {
             if (Equipo.Count < 1)
