@@ -27,3 +27,109 @@ crearEntrenador.CrearEntrenador(entrenador);
 PokemonController elegirPokemon = new PokemonController();
 elegirPokemon.pokemonInicial(entrenador);
 
+while (true)
+{
+    Console.WriteLine("¿Qué te gustaría hacer?");
+    Console.WriteLine("1. Ver mis Pokémon");
+    Console.WriteLine("2. Explorar el mundo");
+    Console.WriteLine("3. Ver mi inventario");
+    Console.WriteLine("4. Salir del juego");
+
+    int opcion = int.Parse(Console.ReadLine());
+
+    if (opcion == 1)
+    {
+        Console.Clear();
+        Console.WriteLine("Tus Pokémon:");
+        foreach (var pokemon in entrenador.Equipo)
+        {
+            pokemon.MostrarPokemon();
+        }
+        ConsolaUtil.EsperaryLimpiar();
+    }
+    else if (opcion == 2)
+    {
+        Console.Clear();
+        Console.WriteLine("Explorando el mundo...");
+        ConsolaUtil.EsperaryLimpiar();
+
+        if (new Random().NextDouble() < 0.5)
+        {
+            Console.WriteLine("¡Has encontrado un Pokémon salvaje!");
+            var ListaPokemon = PokemonData.ListaPokemon();
+            int pokemonAleatorio = new Random().Next(ListaPokemon.Count);
+            Pokemon enemigo = ListaPokemon[pokemonAleatorio];
+            PokemonView.VerPokemon(pokemonAleatorio + 1);
+            enemigo.MostrarPokemon();
+            ConsolaUtil.EsperaryLimpiar();
+            while (true)
+            {
+                Console.WriteLine("Selecciona un Pokémon de tu equipo para luchar!");
+                for (int i = 0; i < entrenador.Equipo.Count; i++)
+                {
+                    Console.WriteLine($"{i + 1}. {entrenador.Equipo[i].Nombre}");
+                }
+                int seleccionPokemon = int.Parse(Console.ReadLine()) - 1;
+                if (seleccionPokemon < 0 || seleccionPokemon >= entrenador.Equipo.Count || entrenador.Equipo[seleccionPokemon] == null)
+                {
+                    Console.WriteLine("Selección inválida, vuelve a intentarlo.");
+                    continue;
+                }
+                else
+                {
+                    BatallaController.BatallaPokemon(entrenador, entrenador.Equipo[seleccionPokemon], enemigo);
+                    break;
+                }
+            }
+        }
+        else
+        {
+            Console.WriteLine("No has encontrado nada interesante en tu exploración...");
+            ConsolaUtil.EsperaryLimpiar();
+        }
+    }
+    else if (opcion == 3)
+    {
+        Console.WriteLine("Pociones:");
+        foreach (var pocion in entrenador.Pociones)
+        {
+            pocion.MostrarPocion();
+        }
+        Console.WriteLine("PokeBolas:");
+        foreach (var pokebola in entrenador.Pokebolas)
+        {
+            pokebola.MostrarPokebola();
+        }
+        Console.WriteLine("¿Le gustaria comprar más pociones o Pokebolas?");
+        Console.WriteLine("1. Comprar Pociones");
+        Console.WriteLine("2. Comprar Pokebolas");
+        Console.WriteLine("3. No comprar");
+        int opcionCompra = int.Parse(Console.ReadLine());
+        if (opcionCompra == 1)
+        {
+            PocionController.comprarPocion(entrenador);
+        }
+        else if (opcionCompra == 2)
+        {
+            PokebolaController.comprarPokebola(entrenador);
+        }
+        else if (opcionCompra == 3)
+        {
+            Console.WriteLine("");
+        }
+        else
+        {
+            Console.WriteLine("Opción no válida.");
+            ConsolaUtil.EsperaryLimpiar();
+        }
+    }
+    else if (opcion == 4)
+    {
+        Console.WriteLine("¡Gracias por jugar!");
+        break;
+    }
+    else
+    {
+        Console.WriteLine("Opción no válida, intenta de nuevo.");
+    }
+}
