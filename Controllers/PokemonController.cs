@@ -58,9 +58,6 @@ namespace Pokedex.Controllers
                     continue;
                 }
             }
-            
-
-
         }
     }
 }
