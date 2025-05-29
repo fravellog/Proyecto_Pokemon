@@ -11,7 +11,7 @@ namespace Pokedex.Controllers
         {
             //Seleccionar Pokemon antes de la batalla
             //Presentacion de la batalla
-            AsciiView.Textos(1);
+            AsciiView.Textos(4);
             Console.WriteLine(@$"¡LA BATALLA HA COMENZADO!
             ¡{aliado.Nombre} VS {enemigo.Nombre}!");
             ConsolaUtil.EsperaryLimpiar();
@@ -53,6 +53,7 @@ namespace Pokedex.Controllers
 
                 if (opcion == 1)
                 {
+                    ConsolaUtil.LimpiarConsola();
                     AsciiView.Textos(5);
                     // Si el usuario elige atacar, se procede a seleccionar un ataque
                     Console.WriteLine("Selecciona un numero para elegir un ataque!");
@@ -106,6 +107,7 @@ namespace Pokedex.Controllers
                     }
                     else
                     {
+                        ConsolaUtil.LimpiarConsola();
                         AsciiView.Textos(6);
                         // Si el usuario elige usar una poción, se muestra la lista de pociones
                         Console.WriteLine("Selecciona una pocion!");
@@ -114,7 +116,6 @@ namespace Pokedex.Controllers
                         {
                             Console.WriteLine($"{i + 1}. {entrenador.Pociones[i].Nombre} - Efecto: {entrenador.Pociones[i].Efecto}");
                         }
-
                         try
                         {
                             // Se selecciona la poción
@@ -161,6 +162,7 @@ namespace Pokedex.Controllers
                 }
                 else if (opcion == 4)
                 {
+                    ConsolaUtil.LimpiarConsola();
                     // El usuario elige capturar al Pokémon enemigo
                     AsciiView.Textos(7);
                     Console.WriteLine($"¡{entrenador.Nombre} está intentando capturar a {enemigo.Nombre}!");
@@ -186,11 +188,13 @@ namespace Pokedex.Controllers
                             {
                                 Console.WriteLine($"¡{entrenador.Nombre} ha capturado a {enemigo.Nombre} con {pokebolaSeleccionada.Nombre}!");
                                 entrenador.Equipo.Add(enemigo);
+                                ConsolaUtil.EsperaryLimpiar();
                                 return; // Termina la batalla si se captura al Pokémon
                             }
                             else
                             {
                                 Console.WriteLine($"¡{entrenador.Nombre} ha fallado al capturar a {enemigo.Nombre}!");
+                                ConsolaUtil.EsperaryLimpiar();
                             }
                         }
                         catch (FormatException)
@@ -207,6 +211,7 @@ namespace Pokedex.Controllers
                 }
                 else
                 {
+                    ConsolaUtil.LimpiarConsola();
                     // Si la opción no es válida, se muestra un mensaje de error
                     Console.WriteLine("Opción no válida. Por favor, seleccione una opción válida.");
                     continue;
