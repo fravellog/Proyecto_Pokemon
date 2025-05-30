@@ -110,12 +110,11 @@ namespace Pokedex.Controllers
                         ConsolaUtil.LimpiarConsola();
                         AsciiView.Textos(6);
                         // Si el usuario elige usar una poción, se muestra la lista de pociones
-                        Console.WriteLine("Selecciona una pocion!");
-                        Console.WriteLine();
                         for (int i = 0; i < entrenador.Pociones.Count; i++)
                         {
                             Console.WriteLine($"{i + 1}. {entrenador.Pociones[i].Nombre} - Efecto: {entrenador.Pociones[i].Efecto}");
                         }
+                        Console.WriteLine("Selecciona una pocion!");
                         try
                         {
                             // Se selecciona la poción
@@ -173,12 +172,11 @@ namespace Pokedex.Controllers
                         continue;
                     } else
                     {
-                        Console.WriteLine("Selecciona una Pokébola para capturar:");
                         for (int i = 0; i < entrenador.Pokebolas.Count; i++)
                         {
                             Console.WriteLine($"{i + 1}. {entrenador.Pokebolas[i].Nombre} - Tipo: {entrenador.Pokebolas[i].Tipo} - Efecto de captura: {entrenador.Pokebolas[i].EfectoCaptura}");
                         }
-
+                        Console.WriteLine("¡Selecciona una Pokébola para capturar!");
                         int seleccionPokebola = -1;
                         try
                         {
@@ -186,6 +184,7 @@ namespace Pokedex.Controllers
                             var pokebolaSeleccionada = entrenador.Pokebolas[seleccionPokebola];
                             if (new Random().Next(0, 250) < pokebolaSeleccionada.EfectoCaptura)
                             {
+                                PokemonView.VerPokemon(enemigo);
                                 Console.WriteLine($"¡{entrenador.Nombre} ha capturado a {enemigo.Nombre} con {pokebolaSeleccionada.Nombre}!");
                                 entrenador.Equipo.Add(enemigo);
                                 ConsolaUtil.EsperaryLimpiar();
@@ -236,6 +235,7 @@ namespace Pokedex.Controllers
             // Fin de la batalla
             Console.WriteLine($"{aliado.Nombre} VS {enemigo.Nombre}");
             Console.WriteLine("¡La batalla ha terminado!");
+            ConsolaUtil.EsperaryLimpiar();
             if (aliado.HP <= 0 && enemigo.HP <= 0)
             {
                 Console.WriteLine("¡Ambos Pokémon han caído!");

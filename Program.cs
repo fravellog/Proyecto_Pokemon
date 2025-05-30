@@ -69,16 +69,28 @@ while (true)
                 {
                     Console.WriteLine($"{i + 1}. {entrenador.Equipo[i].Nombre}");
                 }
-                int seleccionPokemon = int.Parse(Console.ReadLine()) - 1;
-                if (seleccionPokemon < 0 || seleccionPokemon >= entrenador.Equipo.Count || entrenador.Equipo[seleccionPokemon] == null)
+                try
                 {
-                    Console.WriteLine("Selección inválida, vuelve a intentarlo.");
+                    int seleccionPokemon = int.Parse(Console.ReadLine()) - 1;
+                    if (seleccionPokemon < 0 || seleccionPokemon >= entrenador.Equipo.Count)
+                    {
+                        throw new ArgumentOutOfRangeException();
+                    }
+                    else
+                    {
+                        BatallaController.BatallaPokemon(entrenador, entrenador.Equipo[seleccionPokemon], enemigo);
+                        break;
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Por favor, ingresa un número válido.");
                     continue;
                 }
-                else
+                catch (ArgumentOutOfRangeException)
                 {
-                    BatallaController.BatallaPokemon(entrenador, entrenador.Equipo[seleccionPokemon], enemigo);
-                    break;
+                    Console.WriteLine("Por favor, selecciona un Pokémon válido.");
+                    continue;
                 }
             }
         }
