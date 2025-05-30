@@ -9,7 +9,7 @@ namespace Pokedex.Data
         {
             return new List<Pokemon>
             {
-                new Pokemon("charmander", 200, TipoNaturaleza.Fuego)
+                new Pokemon("charmander","charmander", 200, TipoNaturaleza.Fuego)
                 {
                     Ataques = new List<Ataque>
                     {
@@ -17,7 +17,7 @@ namespace Pokedex.Data
                         new Ataque("cuchillada", 10, TipoNaturaleza.Normal)
                     }
                 },
-                new Pokemon("squirtle", 200, TipoNaturaleza.Agua)
+                new Pokemon("squirtle","squirtle", 200, TipoNaturaleza.Agua)
                 {
                     Ataques = new List<Ataque>
                     {
@@ -25,7 +25,7 @@ namespace Pokedex.Data
                         new Ataque("latigo", 10, TipoNaturaleza.Normal)
                     }
                 },
-                new Pokemon("bulbasaur", 200, TipoNaturaleza.Planta)
+                new Pokemon("bulbasaur","bulbasaur", 200, TipoNaturaleza.Planta)
                 {
                     Ataques = new List<Ataque>
                     {
@@ -33,7 +33,7 @@ namespace Pokedex.Data
                         new Ataque("placaje", 10, TipoNaturaleza.Normal)
                     }
                 },
-                new Pokemon("flareon", 200, TipoNaturaleza.Fuego)
+                new Pokemon("flareon","flareon", 200, TipoNaturaleza.Fuego)
                 {
                     Ataques = new List<Ataque>
                     {
@@ -41,7 +41,7 @@ namespace Pokedex.Data
                         new Ataque("derribar", 10, TipoNaturaleza.Normal)
                     }
                 },
-                new Pokemon("sandshrew", 200, TipoNaturaleza.Tierra)
+                new Pokemon("sandshrew","sandshrew", 200, TipoNaturaleza.Tierra)
                 {
                     Ataques = new List<Ataque>
                     {
@@ -49,7 +49,7 @@ namespace Pokedex.Data
                         new Ataque("rasguño", 10, TipoNaturaleza.Normal)
                     }
                 },
-                new Pokemon("jolteon", 200, TipoNaturaleza.Electrico)
+                new Pokemon("jolteon","jolteon", 200, TipoNaturaleza.Electrico)
                 {
                     Ataques = new List<Ataque>
                     {

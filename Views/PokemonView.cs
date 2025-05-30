@@ -7,7 +7,7 @@ namespace Pokedex.Views
 
         public static void VerPokemon(Pokemon pokemon)
         {
-            if (pokemon.Nombre == "charmander")
+            if (pokemon.Especie == "charmander")
             {
                 Console.WriteLine(@"
 ⬜⬜⬜⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜
@@ -32,7 +32,7 @@ namespace Pokedex.Views
 ⬜⬜⬜⬜⬜⬜⬜⬜⬛⬜🟧⬜⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜
 ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜");
             }
-            else if (pokemon.Nombre == "squirtle")
+            else if (pokemon.Especie == "squirtle")
             {
                 Console.WriteLine(@"
 ⬜⬜⬜⬛⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬛⬜⬜
@@ -53,7 +53,7 @@ namespace Pokedex.Views
 ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛🟦🟦🟦⬛⬜⬜⬜⬜⬜⬜⬜⬜
 ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜");
             }
-            else if (pokemon.Nombre == "bulbasaur")
+            else if (pokemon.Especie == "bulbasaur")
             {
                 Console.WriteLine(@"
 ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬜⬜⬜⬜⬜
@@ -74,7 +74,7 @@ namespace Pokedex.Views
 ⬜⬜⬜⬜⬛⬛⬛⬛⬛⬛⬛⬜🟦⬜⬛⬜⬜⬜⬜⬜
 ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬜⬜⬜⬜⬜⬜");
             }
-            else if (pokemon.Nombre == "flareon")
+            else if (pokemon.Especie == "flareon")
             {
                 Console.WriteLine(@"
 ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛
@@ -95,7 +95,7 @@ namespace Pokedex.Views
 ⬜⬜⬜⬜⬜⬛⬛⬛⬛🟥🟥⬛⬜⬜⬜⬜⬜⬜⬜
 ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬛⬜⬜⬜⬜⬜⬜⬜⬜");
             }
-            else if (pokemon.Nombre == "sandshrew")
+            else if (pokemon.Especie == "sandshrew")
             {
                 Console.WriteLine(@"
 ⬜⬜⬜⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜
@@ -117,7 +117,7 @@ namespace Pokedex.Views
 ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬜🟨⬜⬛⬜⬜⬜⬜⬜
 ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬛⬛⬛⬜⬜⬜⬜⬜⬜");
             }
-            else if (pokemon.Nombre == "jolteon")
+            else if (pokemon.Especie == "jolteon")
             {
                 Console.WriteLine(@"
 ⬜⬜⬜⬜⬜⬛⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜

@@ -40,13 +40,49 @@ while (true)
 
     if (opcion == 1)
     {
-        ConsolaUtil.LimpiarConsola();
-        Console.WriteLine("Tus Pokémones:");
-        foreach (var pokemon in entrenador.Equipo)
+        while (true)
         {
-            pokemon.MostrarPokemon();
-        }
+            ConsolaUtil.LimpiarConsola();
+            int opcionCambioNombre = 0;
+            Console.WriteLine("Tus Pokémones:");
+            foreach (var pokemon in entrenador.Equipo)
+            {
+                pokemon.MostrarEquipo();
+            }
+            Console.WriteLine("¿Desea cambiar el nombre de sus pokemones?");
+            Console.WriteLine("1. Sí");
+            Console.WriteLine("2. No");
+            try
+            {
+                opcionCambioNombre = int.Parse(Console.ReadLine());
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Por favor, ingresa un número válido.");
+                continue;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                Console.WriteLine("Por favor, selecciona una opción válida.");
+                continue;
+            }
+            if (opcionCambioNombre == 1)
+            {
+                PokemonController.apodoPokemon(entrenador);
+            }
+            else if (opcionCambioNombre == 2)
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Opción no válida, intenta de nuevo.");
+                continue;
+            }
+            PokemonController.apodoPokemon(entrenador);
+            break;
         ConsolaUtil.EsperaryLimpiar();
+        }
     }
     else if (opcion == 2)
     {
@@ -68,7 +104,7 @@ while (true)
                 Console.WriteLine("Selecciona un Pokémon de tu equipo para luchar!");
                 for (int i = 0; i < entrenador.Equipo.Count; i++)
                 {
-                    Console.WriteLine($"{i + 1}. {entrenador.Equipo[i].Nombre}");
+                    Console.WriteLine($"{i + 1}. {entrenador.Equipo[i].Nombre} ({entrenador.Equipo[i].Especie})");
                 }
                 try
                 {
