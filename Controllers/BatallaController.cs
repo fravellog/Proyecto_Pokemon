@@ -9,6 +9,7 @@ namespace Pokedex.Controllers
     {
         public static void BatallaPokemon(Entrenador entrenador,Pokemon aliado, Pokemon enemigo)
         {
+            ConsolaUtil.LimpiarConsola();
             //Seleccionar Pokemon antes de la batalla
             //Presentacion de la batalla
             AsciiView.Textos(4);
@@ -19,8 +20,16 @@ namespace Pokedex.Controllers
             // Comienza el bucle de batalla
             while (aliado.HP > 0 && enemigo.HP > 0)
             {
-                aliado.MostrarPokemon();
-                Console.WriteLine("Selecciona una opcion!");
+                // Se muestra el estado de los Pokémon
+                ConsolaUtil.LimpiarConsola();
+                Console.WriteLine($"{aliado.Nombre}");
+                Console.WriteLine($"HP: {aliado.HP}");
+                Console.WriteLine("");
+                Console.WriteLine($"{enemigo.Nombre}");
+                Console.WriteLine($"HP: {enemigo.HP}");
+                Console.WriteLine("");
+                // Se muestran las opciones de acción al usuario
+                Console.WriteLine("Elige el numero de la accion!");
                 Console.WriteLine("1. Atacar");
                 Console.WriteLine("2. Usar pocion");
                 Console.WriteLine("3. Huir");
@@ -42,12 +51,14 @@ namespace Pokedex.Controllers
                 {
                     // Si la entrada no es un número, se muestra un mensaje de error
                     Console.WriteLine("Por favor, ingrese un número válido.");
+                    ConsolaUtil.EsperaryLimpiar();
                     continue;
                 }
                 catch (ArgumentOutOfRangeException)
                 {
                     // Si el número está fuera de rango, se muestra un mensaje de error
                     Console.WriteLine("Por favor, seleccione una opción válida.");
+                    ConsolaUtil.EsperaryLimpiar();
                     continue;
                 }
 
@@ -76,12 +87,14 @@ namespace Pokedex.Controllers
                     {
                         // Si la entrada no es un número, se muestra un mensaje de error
                         Console.WriteLine("Por favor, ingrese un número válido.");
+                        ConsolaUtil.EsperaryLimpiar();
                         continue;
                     }
                     catch (ArgumentOutOfRangeException)
                     {
                         // Si el número está fuera de rango, se muestra un mensaje de error
                         Console.WriteLine("Por favor, seleccione un ataque válido.");
+                        ConsolaUtil.EsperaryLimpiar();
                         continue;
                     }
                     // Se calcula la potencia de los ataques
@@ -103,6 +116,7 @@ namespace Pokedex.Controllers
                     {
                         // Si el entrenador no tiene pociones, se muestra un mensaje
                         Console.WriteLine("No tienes pociones para usar!");
+                        ConsolaUtil.EsperaryLimpiar();
                         continue;
                     }
                     else
@@ -132,12 +146,14 @@ namespace Pokedex.Controllers
                         {
                             // Si la entrada no es un número, se muestra un mensaje de error
                             Console.WriteLine("Por favor, ingrese un número válido.");
+                            ConsolaUtil.EsperaryLimpiar();
                             continue;
                         }
                         catch (ArgumentOutOfRangeException)
                         {
                             // Si el número está fuera de rango, se muestra un mensaje de error
                             Console.WriteLine("Por favor, seleccione una poción válida.");
+                            ConsolaUtil.EsperaryLimpiar();
                             continue;
                         }
                     }
@@ -149,6 +165,7 @@ namespace Pokedex.Controllers
                     if (new Random().NextDouble() < 0.5)
                     {
                         Console.WriteLine($"{aliado.Nombre} ha huido de la batalla exitosamente!");
+                        ConsolaUtil.EsperaryLimpiar();
                         return;
                     }
                     else
@@ -156,7 +173,6 @@ namespace Pokedex.Controllers
                         Console.WriteLine($"{aliado.Nombre} intentó huir, pero no lo logró!");
                         ConsolaUtil.EsperaryLimpiar();
                         // La batalla continúa
-                        continue;
                     }
                 }
                 else if (opcion == 4)
@@ -239,14 +255,18 @@ namespace Pokedex.Controllers
             if (aliado.HP <= 0 && enemigo.HP <= 0)
             {
                 Console.WriteLine("¡Ambos Pokémon han caído!");
+                ConsolaUtil.EsperaryLimpiar();
             }
             else if (aliado.HP <= 0)
             {
                 Console.WriteLine($"{enemigo.Nombre} ha ganado la batalla!, mejor suerte la proxima vez!");
+                ConsolaUtil.EsperaryLimpiar();
             }
             else
             {
+                AsciiView.Textos(8);
                 Console.WriteLine($"{aliado.Nombre} ha ganado la batalla!, felicidades!");
+                ConsolaUtil.EsperaryLimpiar();
             }
 
         }

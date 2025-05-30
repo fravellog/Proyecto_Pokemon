@@ -29,8 +29,9 @@ elegirPokemon.pokemonInicial(entrenador);
 
 while (true)
 {
+    ConsolaUtil.EsperaryLimpiar();
     Console.WriteLine("¿Qué te gustaría hacer?");
-    Console.WriteLine("1. Ver mis Pokémon");
+    Console.WriteLine("1. Ver mis Pokémones");
     Console.WriteLine("2. Explorar el mundo");
     Console.WriteLine("3. Ver mi inventario");
     Console.WriteLine("4. Salir del juego");
@@ -40,7 +41,7 @@ while (true)
     if (opcion == 1)
     {
         Console.Clear();
-        Console.WriteLine("Tus Pokémon:");
+        Console.WriteLine("Tus Pokémones:");
         foreach (var pokemon in entrenador.Equipo)
         {
             pokemon.MostrarPokemon();
