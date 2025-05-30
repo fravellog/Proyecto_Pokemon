@@ -100,12 +100,13 @@ namespace Pokedex.Controllers
                     continue;
                 }
 
-                Console.WriteLine($"¿Qué apodo le quieres poner a {entrenador.Equipo[seleccionPokemon].Nombre}?");
+                Console.WriteLine($"¿Qué apodo le quieres poner a tu {entrenador.Equipo[seleccionPokemon].Especie}?");
                 string apodo = Console.ReadLine();
                 if (!string.IsNullOrEmpty(apodo))
                 {
                     entrenador.Equipo[seleccionPokemon].Nombre = apodo;
                     Console.WriteLine($"¡Has puesto el apodo {apodo} a tu {entrenador.Equipo[seleccionPokemon].Especie}!");
+                    ConsolaUtil.EsperaryLimpiar();
                     break;
                 }
                 else

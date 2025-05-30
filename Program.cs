@@ -69,6 +69,7 @@ while (true)
             if (opcionCambioNombre == 1)
             {
                 PokemonController.apodoPokemon(entrenador);
+                break;
             }
             else if (opcionCambioNombre == 2)
             {
