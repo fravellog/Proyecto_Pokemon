@@ -29,14 +29,27 @@ elegirPokemon.pokemonInicial(entrenador);
 
 while (true)
 {
+    int opcion = 0;
     ConsolaUtil.EsperaryLimpiar();
     Console.WriteLine("¿Qué te gustaría hacer?");
     Console.WriteLine("1. Ver mis Pokémones");
     Console.WriteLine("2. Explorar el mundo");
     Console.WriteLine("3. Ver mi inventario");
     Console.WriteLine("4. Salir del juego");
-
-    int opcion = int.Parse(Console.ReadLine());
+    try
+    { 
+        opcion = int.Parse(Console.ReadLine());
+    }
+    catch (FormatException)
+    {
+        Console.WriteLine("Por favor, ingresa un número válido.");
+        continue;
+    }
+    catch (ArgumentOutOfRangeException)
+    {
+        Console.WriteLine("Por favor, selecciona una opción válida.");
+        continue;
+    }
 
     if (opcion == 1)
     {
@@ -138,7 +151,7 @@ while (true)
             {
                 Console.WriteLine("Opción no válida.");
                 ConsolaUtil.EsperaryLimpiar();
-            }  
+            }
         }
         catch (FormatException)
         {
