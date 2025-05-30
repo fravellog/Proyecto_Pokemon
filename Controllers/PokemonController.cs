@@ -2,6 +2,7 @@ using System.Text;
 using Pokedex.Data;
 using Pokedex.Views;
 using Pokedex.Models;
+using Pokedex.Utils;
 
 namespace Pokedex.Controllers
 {
@@ -9,7 +10,7 @@ namespace Pokedex.Controllers
     {
         public void pokemonInicial(Entrenador entrenador)
         {
-            Console.Clear();
+            ConsolaUtil.LimpiarConsola();
             AsciiView.Textos(3);
             Console.WriteLine("¡Muy bien, es momento de elegir tu pokemon inicial!");
             while (true)
@@ -42,6 +43,7 @@ namespace Pokedex.Controllers
                     continue;
                     
                 }
+                ConsolaUtil.LimpiarConsola();
                 PokemonView.VerPokemon(PokemonData.ListaPokemon()[seleccionPokemon]);
                 PokemonData.ListaPokemon()[seleccionPokemon].MostrarPokemon();
                 Console.WriteLine("¿Es correcto? (S/N)");

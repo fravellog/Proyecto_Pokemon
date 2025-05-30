@@ -11,7 +11,7 @@ namespace Pokedex.Controllers
             ConsolaUtil.LimpiarConsola();
             AsciiView.Textos(7);
             Console.WriteLine("Bienvenido a la tienda de Pokebolas!");
-            Console.WriteLine("En esta sección puede seleccionar la Pokebola que desea almacenar!");
+            Console.WriteLine("En esta sección puede seleccionar la Pokebola que desea almacenar (MAX. 5)!");
             while (true)
             {
                 Console.WriteLine("1. Pokebola");
@@ -27,7 +27,7 @@ namespace Pokedex.Controllers
                     seleccionPokebola = int.Parse(Console.ReadLine()) - 1;
                     if (seleccionPokebola < 0 || seleccionPokebola > PokebolaData.Pokebolas.Count - 1)
                     {
-                        if (seleccionPokebola == 5)
+                        if (seleccionPokebola == 4)
                         {
                             Console.WriteLine("¡Gracias por visitar la tienda de Pokebolas!");
                             ConsolaUtil.EsperaryLimpiar();

@@ -40,7 +40,7 @@ while (true)
 
     if (opcion == 1)
     {
-        Console.Clear();
+        ConsolaUtil.LimpiarConsola();
         Console.WriteLine("Tus Pokémones:");
         foreach (var pokemon in entrenador.Equipo)
         {
@@ -103,6 +103,7 @@ while (true)
     }
     else if (opcion == 3)
     {
+        ConsolaUtil.LimpiarConsola();
         Console.WriteLine("Pociones:");
         foreach (var pocion in entrenador.Pociones)
         {
@@ -117,23 +118,37 @@ while (true)
         Console.WriteLine("1. Comprar Pociones");
         Console.WriteLine("2. Comprar Pokebolas");
         Console.WriteLine("3. No comprar");
-        int opcionCompra = int.Parse(Console.ReadLine());
-        if (opcionCompra == 1)
+        try
         {
-            PocionController.comprarPocion(entrenador);
+            int opcionCompra = int.Parse(Console.ReadLine());
+
+            if (opcionCompra == 1)
+            {
+                PocionController.comprarPocion(entrenador);
+            }
+            else if (opcionCompra == 2)
+            {
+                PokebolaController.comprarPokebola(entrenador);
+            }
+            else if (opcionCompra == 3)
+            {
+                Console.WriteLine("");
+            }
+            else
+            {
+                Console.WriteLine("Opción no válida.");
+                ConsolaUtil.EsperaryLimpiar();
+            }  
         }
-        else if (opcionCompra == 2)
+        catch (FormatException)
         {
-            PokebolaController.comprarPokebola(entrenador);
+            Console.WriteLine("Por favor, ingresa un número válido.");
+            continue;
         }
-        else if (opcionCompra == 3)
+        catch (ArgumentOutOfRangeException)
         {
-            Console.WriteLine("");
-        }
-        else
-        {
-            Console.WriteLine("Opción no válida.");
-            ConsolaUtil.EsperaryLimpiar();
+            Console.WriteLine("Por favor, selecciona una opción válida.");
+            continue;
         }
     }
     else if (opcion == 4)

@@ -135,7 +135,7 @@ namespace Pokedex.Controllers
                             int seleccionPocion = int.Parse(Console.ReadLine()) - 1;
 
                             // Se valida la selección de la poción
-                            var pocionSeleccionada = PocionData.Pociones[seleccionPocion];
+                            var pocionSeleccionada = entrenador.Pociones[seleccionPocion];
                             aliado.HP += pocionSeleccionada.Efecto;
                             Console.WriteLine($"{aliado.Nombre} ha usado {pocionSeleccionada.Nombre} y ha recuperado {pocionSeleccionada.Efecto} puntos de vida!");
                             entrenador.Pociones.Remove(pocionSeleccionada);

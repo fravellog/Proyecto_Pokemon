@@ -11,7 +11,7 @@ namespace Pokedex.Controllers
             ConsolaUtil.LimpiarConsola();
             AsciiView.Textos(6);
             Console.WriteLine("¡Bienvenido a la tienda de pociones!");
-            Console.WriteLine("En esta seccion puede seleccionar la pocion que desea almacenar!");
+            Console.WriteLine("En esta seccion puede seleccionar la pocion que desea almacenar (MAX. 3)!");
             while (true)
             {
                 Console.WriteLine("1. Pocion");
@@ -26,7 +26,7 @@ namespace Pokedex.Controllers
                     seleccionPocion = int.Parse(Console.ReadLine()) - 1;
                     if (seleccionPocion < 0 || seleccionPocion > PocionData.Pociones.Count - 1)
                     {
-                        if (seleccionPocion == 5)
+                        if (seleccionPocion == 4)
                         {
                             Console.WriteLine("¡Gracias por visitar la tienda de pociones!");
                             ConsolaUtil.EsperaryLimpiar();
@@ -55,6 +55,7 @@ namespace Pokedex.Controllers
                     Console.WriteLine($"¡Has comprado una {pocionElegida.Nombre}!");
                     entrenador.agregarPocion(pocionElegida);
                     Console.WriteLine($"Ahora tienes {entrenador.Pociones.Count} pociones en tu inventario.");
+                    ConsolaUtil.EsperaryLimpiar();
                 }
                 else if (confirmacion.ToUpper() == "N")
                 {
