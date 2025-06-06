@@ -22,7 +22,7 @@ namespace Pokedex.Models
         public void MostrarEquipo()
         {
             Console.WriteLine($"Especie: {Especie}");
-            Console.WriteLine($"Nombre: {Nombre}");
+            Console.WriteLine($"Apodo: {Nombre}");
             Console.WriteLine($"Tipo: {Tipo}");
             Console.WriteLine($"HP: {HP}");
             Console.WriteLine("Ataques:");
