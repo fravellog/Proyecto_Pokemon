@@ -236,7 +236,7 @@ namespace Pokedex.Controllers
 
 
                 // Se selecciona el ataque del enemigo
-                    seleccionAtaque2 = new Random().Next(0, enemigo.Ataques.Count);
+                seleccionAtaque2 = new Random().Next(0, enemigo.Ataques.Count);
                 var enemigoAtaque = enemigo.Ataques[seleccionAtaque2];
                 double potenciaEnemigo = AtaquePotencia.CalcularPotencia(enemigo, aliado);
                 potenciaEnemigo *= enemigo.Ataques[seleccionAtaque2].Poder;

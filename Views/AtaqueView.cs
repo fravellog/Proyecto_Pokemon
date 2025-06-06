@@ -1,4 +1,5 @@
 using Pokedex.Models;
+using Pokedex.Utils;
 namespace Pokedex.Views
 {
     public class AtaqueView
@@ -7,6 +8,13 @@ namespace Pokedex.Views
         {
             if (ataque.Tipo == TipoNaturaleza.Fuego)
             {
+                Console.WriteLine("¡Cargando ataque!");
+                for (int i = 0; i < 5; i++)
+                {
+                    Console.Write("🔥");
+                    Thread.Sleep(500);
+                }
+                ConsolaUtil.LimpiarConsola();
                 Console.WriteLine(@"
     ⠀⠀⠀⠀⠀⠀⠀⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -35,6 +43,13 @@ namespace Pokedex.Views
             }
             else if (ataque.Tipo == TipoNaturaleza.Agua)
             {
+                Console.WriteLine("¡Cargando ataque!");
+                for (int i = 0; i < 5; i++)
+                {
+                    Console.Write("💦");
+                    Thread.Sleep(500);
+                }
+                ConsolaUtil.LimpiarConsola();
                 Console.WriteLine(@"
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -45,11 +60,11 @@ namespace Pokedex.Views
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⡿⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⠃⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⣀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⡆⠀⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀ ⢀⣿⡀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢿⣆⡀⠙⠻⣿⣿⣿⣿⣿⡿⠃⠀⠀ ⣼⣿⣧⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠶⠶⠶⠾⠿⠛⠋⠀⠀⠀⠀⣰⣿⣿⣿⣆⠀⠀⠀⠀   
-                             ⣰⣿⣿⣿⣿⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⣀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⡆⠀⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⢀⣿⡀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢿⣆⡀⠙⠻⣿⣿⣿⣿⣿⡿⠃⠀⣼⣿⣧⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠶⠶⠶⠾⠿⠛⠋⠀⠀⠀⣰⣿⣿⣿⣆⠀⠀⠀⠀   
+                            ⣰⣿⣿⣿⣿⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
                            ⣰⣿⣿⣿⣿⣿⣿⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
                           ⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀
                          ⣰⡿⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀
@@ -61,6 +76,13 @@ namespace Pokedex.Views
             }
             else if (ataque.Tipo == TipoNaturaleza.Planta)
             {
+                Console.WriteLine("¡Cargando ataque!");
+                for (int i = 0; i < 5; i++)
+                {
+                    Console.Write("🍃");
+                    Thread.Sleep(500);
+                }
+                ConsolaUtil.LimpiarConsola();
                 Console.WriteLine(@"
 ⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⣤⣤⣄⣀⣀⡀⠀⠀⠀    
 ⠀⠀⠀⠀⠀⢀⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣶⠶
@@ -74,6 +96,13 @@ namespace Pokedex.Views
             }
             else if (ataque.Tipo == TipoNaturaleza.Tierra)
             {
+                Console.WriteLine("¡Cargando ataque!");
+                for (int i = 0; i < 5; i++)
+                {
+                    Console.Write("🪨");
+                    Thread.Sleep(500);
+                }
+                ConsolaUtil.LimpiarConsola();
                 Console.WriteLine(@"
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣡⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -93,6 +122,13 @@ namespace Pokedex.Views
             }
             else if (ataque.Tipo == TipoNaturaleza.Electrico)
             {
+                Console.WriteLine("¡Cargando ataque!");
+                for (int i = 0; i < 5; i++)
+                {
+                    Console.Write("⚡");
+                    Thread.Sleep(500);
+                }
+                ConsolaUtil.LimpiarConsola();
                 Console.WriteLine(@"
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⡴⠂
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣾⡿⠋⠀⠀
