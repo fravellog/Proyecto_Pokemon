@@ -89,7 +89,7 @@ while (true)
     {
         Console.Clear();
         Console.WriteLine("Explorando el mundo...");
-        ConsolaUtil.EsperaryLimpiar();
+        ConsolaUtil.mostrarCarga();
 
         if (new Random().NextDouble() < 0.5)
         {

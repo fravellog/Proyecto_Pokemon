@@ -69,6 +69,7 @@ namespace Pokedex.Controllers
         }
         public static void apodoPokemon(Entrenador entrenador)
         {
+            ConsolaUtil.mostrarCarga();
             ConsolaUtil.LimpiarConsola();
             Console.WriteLine("¡Es momento de ponerle un apodo a tu pokemon!");
             while (true)

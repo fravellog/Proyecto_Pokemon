@@ -9,6 +9,8 @@ namespace Pokedex.Controllers
     {
         public static void BatallaPokemon(Entrenador entrenador,Pokemon aliado, Pokemon enemigo)
         {
+            // Se muestra un mensaje de carga y se limpia la consola
+            ConsolaUtil.mostrarCarga();
             ConsolaUtil.LimpiarConsola();
             //Seleccionar Pokemon antes de la batalla
             //Presentacion de la batalla
