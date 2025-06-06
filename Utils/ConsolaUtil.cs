@@ -20,7 +20,7 @@ namespace Pokedex.Utils
             for (int i = 0; i < 3; i++)
             {
                 Console.Write(".");
-                System.Threading.Thread.Sleep(1000); // Espera medio segundo entre puntos
+                System.Threading.Thread.Sleep(1000); // Espera un segundo entre puntos
             }
             Console.WriteLine(); // Nueva línea después de los puntos
         }
