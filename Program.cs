@@ -30,11 +30,11 @@ elegirPokemon.pokemonInicial(entrenador);
 while (true)
 {
     ConsolaUtil.EsperaryLimpiar();
-    Console.WriteLine("¿Qué te gustaría hacer?");
-    Console.WriteLine("1. Ver mis Pokémones");
-    Console.WriteLine("2. Explorar el mundo");
-    Console.WriteLine("3. Ver mi inventario");
-    Console.WriteLine("4. Salir del juego");
+    ConsolaUtil.escribir("¿Qué te gustaría hacer?\n");
+    ConsolaUtil.escribir("1. Ver mis Pokémones\n");
+    ConsolaUtil.escribir("2. Explorar el mundo\n");
+    ConsolaUtil.escribir("3. Ver mi inventario\n");
+    ConsolaUtil.escribir("4. Salir del juego\n\n");
 
     int opcion = int.Parse(Console.ReadLine());
 
@@ -44,14 +44,14 @@ while (true)
         {
             ConsolaUtil.LimpiarConsola();
             int opcionCambioNombre = 0;
-            Console.WriteLine("Tus Pokémones:");
+            ConsolaUtil.escribir("Tus Pokémones:\n");
             foreach (var pokemon in entrenador.Equipo)
             {
                 pokemon.MostrarEquipo();
             }
-            Console.WriteLine("¿Desea cambiar el nombre de sus pokemones?");
-            Console.WriteLine("1. Sí");
-            Console.WriteLine("2. No");
+            ConsolaUtil.escribir("¿Desea cambiar el nombre de sus pokemones?\n");
+            ConsolaUtil.escribir("1. Sí\n");
+            ConsolaUtil.escribir("2. No\n\n");
             try
             {
                 opcionCambioNombre = int.Parse(Console.ReadLine());
@@ -80,15 +80,12 @@ while (true)
                 Console.WriteLine("Opción no válida, intenta de nuevo.");
                 continue;
             }
-            PokemonController.apodoPokemon(entrenador);
-            break;
-        ConsolaUtil.EsperaryLimpiar();
         }
     }
     else if (opcion == 2)
     {
         Console.Clear();
-        Console.WriteLine("Explorando el mundo...");
+        ConsolaUtil.escribir("Explorando el mundo...\n");
         ConsolaUtil.mostrarCarga();
 
         if (new Random().NextDouble() < 0.5)
@@ -102,10 +99,10 @@ while (true)
             ConsolaUtil.EsperaryLimpiar();
             while (true)
             {
-                Console.WriteLine("Selecciona un Pokémon de tu equipo para luchar!");
+                ConsolaUtil.escribir("Selecciona un Pokémon de tu equipo para luchar!\n");
                 for (int i = 0; i < entrenador.Equipo.Count; i++)
                 {
-                    Console.WriteLine($"{i + 1}. {entrenador.Equipo[i].Nombre} ({entrenador.Equipo[i].Especie})");
+                    ConsolaUtil.escribir($"{i + 1}. {entrenador.Equipo[i].Nombre} ({entrenador.Equipo[i].Especie})\n");
                 }
                 try
                 {
@@ -134,27 +131,27 @@ while (true)
         }
         else
         {
-            Console.WriteLine("No has encontrado nada interesante en tu exploración...");
+            ConsolaUtil.escribir("No has encontrado nada interesante en tu exploración...\n");
             ConsolaUtil.EsperaryLimpiar();
         }
     }
     else if (opcion == 3)
     {
         ConsolaUtil.LimpiarConsola();
-        Console.WriteLine("Pociones:");
+        ConsolaUtil.escribir("Pociones:\n");
         foreach (var pocion in entrenador.Pociones)
         {
             pocion.MostrarPocion();
         }
-        Console.WriteLine("PokeBolas:");
+        ConsolaUtil.escribir("PokeBolas:\n");
         foreach (var pokebola in entrenador.Pokebolas)
         {
             pokebola.MostrarPokebola();
         }
-        Console.WriteLine("¿Le gustaria comprar más pociones o Pokebolas?");
-        Console.WriteLine("1. Comprar Pociones");
-        Console.WriteLine("2. Comprar Pokebolas");
-        Console.WriteLine("3. No comprar");
+        ConsolaUtil.escribir("¿Le gustaria comprar más pociones o Pokebolas?\n");
+        ConsolaUtil.escribir("1. Comprar Pociones\n");
+        ConsolaUtil.escribir("2. Comprar Pokebolas\n");
+        ConsolaUtil.escribir("3. No comprar\n\n");
         try
         {
             int opcionCompra = int.Parse(Console.ReadLine());
@@ -190,7 +187,7 @@ while (true)
     }
     else if (opcion == 4)
     {
-        Console.WriteLine("¡Gracias por jugar!");
+        ConsolaUtil.escribir("¡Gracias por jugar!\n");
         break;
     }
     else
