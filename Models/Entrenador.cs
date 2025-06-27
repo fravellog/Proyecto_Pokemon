@@ -43,10 +43,6 @@ namespace Pokedex.Models
             {
                 Pokebolas.Add(pokebola);
             }
-            else
-            {
-                Console.WriteLine("¡No puedes llevar más pokebolas!");
-            }
         }
     }
 }
