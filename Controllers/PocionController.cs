@@ -10,16 +10,16 @@ namespace Pokedex.Controllers
         {
             ConsolaUtil.LimpiarConsola();
             AsciiView.Textos(6);
-            Console.WriteLine("¡Bienvenido a la tienda de pociones!");
-            Console.WriteLine("En esta seccion puede seleccionar la pocion que desea almacenar (MAX. 3)!");
+            ConsolaUtil.escribir("¡Bienvenido a la tienda de pociones!\n");
+            ConsolaUtil.escribir("En esta seccion puede seleccionar la pocion que desea almacenar (MAX. 3)!\n\n");
             while (true)
             {
-                Console.WriteLine("1. Pocion");
-                Console.WriteLine("2. Super Pocion");
-                Console.WriteLine("3. Ultra Pocion");
-                Console.WriteLine("4. Maxima Pocion");
-                Console.WriteLine("5. Salir de la tienda");
-                Console.WriteLine("¡Selecciona el número de la poción que deseas comprar!:");
+                ConsolaUtil.escribir("1. Pocion\n");
+                ConsolaUtil.escribir("2. Super Pocion\n");
+                ConsolaUtil.escribir("3. Ultra Pocion\n");
+                ConsolaUtil.escribir("4. Maxima Pocion\n");
+                ConsolaUtil.escribir("5. Salir de la tienda\n");
+                ConsolaUtil.escribir("¡Selecciona el número de la poción que deseas comprar!:\n\n");
                 int seleccionPocion = -1;
                 try
                 {
@@ -28,11 +28,11 @@ namespace Pokedex.Controllers
                     {
                         if (seleccionPocion == 4)
                         {
-                            Console.WriteLine("¡Gracias por visitar la tienda de pociones!");
+                            ConsolaUtil.escribir("¡Gracias por visitar la tienda de pociones!\n");
                             ConsolaUtil.EsperaryLimpiar();
                             break;
                         }
-                        Console.WriteLine("Por favor, seleccione una poción válida.");
+                        ConsolaUtil.escribir("Por favor, seleccione una poción válida.\n");
                         continue;
                     }
                 }
@@ -47,24 +47,30 @@ namespace Pokedex.Controllers
                     continue;
                 }
                 PocionData.Pociones[seleccionPocion].MostrarPocion();
-                Console.WriteLine("¿Es correcto? (S/N)");
+                ConsolaUtil.escribir("¿Es correcto? (S/N)\n");
                 string confirmacion = Console.ReadLine();
-                if (confirmacion.ToUpper() == "S")
+                if (confirmacion.ToUpper() == "S" && entrenador.Pociones.Count < 3)
                 {
                     Pocion pocionElegida = PocionData.Pociones[seleccionPocion];
-                    Console.WriteLine($"¡Has comprado una {pocionElegida.Nombre}!");
+                    ConsolaUtil.escribir($"¡Has comprado una {pocionElegida.Nombre}!\n");
                     entrenador.agregarPocion(pocionElegida);
-                    Console.WriteLine($"Ahora tienes {entrenador.Pociones.Count} pociones en tu inventario.");
+                    ConsolaUtil.escribir($"Ahora tienes {entrenador.Pociones.Count} pociones en tu inventario.\n");
                     ConsolaUtil.EsperaryLimpiar();
                 }
                 else if (confirmacion.ToUpper() == "N")
                 {
-                    Console.WriteLine("¡Intenta de nuevo!");
+                    ConsolaUtil.escribir("¡Intenta de nuevo!\n");
+                    continue;
+                }
+                else if (confirmacion.ToUpper() == "S" && entrenador.Pociones.Count == 3)
+                {
+                    ConsolaUtil.escribir("¡No puedes llevar mas pociones!\n");
+                    ConsolaUtil.EsperaryLimpiar();
                     continue;
                 }
                 else
                 {
-                    Console.WriteLine("Opción no válida, por favor intente de nuevo.");
+                    ConsolaUtil.escribir("Opción no válida, por favor intente de nuevo.\n");
                     continue;
                 }
             }

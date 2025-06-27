@@ -10,16 +10,16 @@ namespace Pokedex.Controllers
         {
             ConsolaUtil.LimpiarConsola();
             AsciiView.Textos(7);
-            Console.WriteLine("Bienvenido a la tienda de Pokebolas!");
-            Console.WriteLine("En esta sección puede seleccionar la Pokebola que desea almacenar (MAX. 5)!");
+            ConsolaUtil.escribir("Bienvenido a la tienda de Pokebolas!\n");
+            ConsolaUtil.escribir("En esta sección puede seleccionar la Pokebola que desea almacenar (MAX. 5)!\n\n");
             while (true)
             {
-                Console.WriteLine("1. Pokebola");
-                Console.WriteLine("2. Superbola");
-                Console.WriteLine("3. Ultrabola");
-                Console.WriteLine("4. Masterball");
-                Console.WriteLine("5. Salir de la tienda");
-                Console.WriteLine("¡Selecciona el número de la Pokebola que deseas comprar!:");
+                ConsolaUtil.escribir("1. Pokebola\n");
+                ConsolaUtil.escribir("2. Superbola\n");
+                ConsolaUtil.escribir("3. Ultrabola\n");
+                ConsolaUtil.escribir("4. Masterball\n");
+                ConsolaUtil.escribir("5. Salir de la tienda\n");
+                ConsolaUtil.escribir("¡Selecciona el número de la Pokebola que deseas comprar!:\n\n");
 
                 int seleccionPokebola = -1;
                 try
@@ -29,11 +29,11 @@ namespace Pokedex.Controllers
                     {
                         if (seleccionPokebola == 4)
                         {
-                            Console.WriteLine("¡Gracias por visitar la tienda de Pokebolas!");
+                            ConsolaUtil.escribir("¡Gracias por visitar la tienda de Pokebolas!\n");
                             ConsolaUtil.EsperaryLimpiar();
                             break;
                         }
-                        Console.WriteLine("Por favor, seleccione una Pokebola válida.");
+                        ConsolaUtil.escribir("Por favor, seleccione una Pokebola válida.\n");
                         continue;
                     }
                 }
@@ -49,19 +49,25 @@ namespace Pokedex.Controllers
                 }
 
                 PokebolaData.Pokebolas[seleccionPokebola].MostrarPokebola();
-                Console.WriteLine("¿Es correcto? (S/N)");
+                ConsolaUtil.escribir("¿Es correcto? (S/N)\n");
                 string confirmacion = Console.ReadLine();
 
-                if (confirmacion.ToUpper() == "S")
+                if (confirmacion.ToUpper() == "S" && entrenador.Pokebolas.Count < 5)
                 {
                     entrenador.agregarPokebola(PokebolaData.Pokebolas[seleccionPokebola]);
-                    Console.WriteLine($"¡Has comprado una {PokebolaData.Pokebolas[seleccionPokebola].Nombre}!");
-                    Console.WriteLine($"Ahora tienes {entrenador.Pokebolas.Count} Pokebolas en tu inventario.");
+                    ConsolaUtil.escribir($"¡Has comprado una {PokebolaData.Pokebolas[seleccionPokebola].Nombre}!\n");
+                    ConsolaUtil.escribir($"Ahora tienes {entrenador.Pokebolas.Count} Pokebolas en tu inventario.\n");
                     ConsolaUtil.EsperaryLimpiar();
                 }
                 else if (confirmacion.ToUpper() == "N")
                 {
-                    Console.WriteLine("¡Intenta de nuevo!");
+                    ConsolaUtil.escribir("¡Intenta de nuevo!\n");
+                }
+                else if (confirmacion.ToUpper() == "S" && entrenador.Pokebolas.Count == 5)
+                {
+                    ConsolaUtil.escribir("¡No puedes llevar más Pokebolas!\n");
+                    ConsolaUtil.EsperaryLimpiar();
+                    continue;
                 }
             }
         }
