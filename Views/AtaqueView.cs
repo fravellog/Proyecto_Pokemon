@@ -14,8 +14,8 @@ namespace Pokedex.Views
                     Console.Write("🔥");
                     Thread.Sleep(500);
                 }
-                ConsolaUtil.LimpiarConsola();
                 FrameView.FuegoFrame();
+                ConsolaUtil.LimpiarConsola();
             }
             else if (ataque.Tipo == TipoNaturaleza.Agua)
             {
