@@ -24,19 +24,16 @@ namespace Pokedex.Controllers
             {
                 // Se muestra el estado de los Pokémon
                 ConsolaUtil.LimpiarConsola();
-                Console.WriteLine($"{aliado.Nombre}");
-                Console.WriteLine($"HP: {aliado.HP}");
-                Console.WriteLine("");
-                Console.WriteLine($"{enemigo.Nombre}");
-                Console.WriteLine($"HP: {enemigo.HP}");
-                Console.WriteLine("");
+                ConsolaUtil.escribir($"{aliado.Nombre}\n");
+                ConsolaUtil.escribir($"HP: {aliado.HP}\n\n");
+                ConsolaUtil.escribir($"{enemigo.Nombre}\n");
+                ConsolaUtil.escribir($"HP: {enemigo.HP}\n\n");
                 // Se muestran las opciones de acción al usuario
-                Console.WriteLine("Elige el numero de la accion!");
-                Console.WriteLine("1. Atacar");
-                Console.WriteLine("2. Usar pocion");
-                Console.WriteLine("3. Huir");
-                Console.WriteLine("4. Capturar Pokemon");
-                Console.WriteLine("");
+                ConsolaUtil.escribir("Elige el numero de la accion!\n");
+                ConsolaUtil.escribir("1. Atacar\n");
+                ConsolaUtil.escribir("2. Usar pocion\n");
+                ConsolaUtil.escribir("3. Huir\n");
+                ConsolaUtil.escribir("4. Capturar Pokemon\n\n");
                 // Se captura la entrada del usuario y se valida
                 int opcion = -1;
 
@@ -117,7 +114,7 @@ namespace Pokedex.Controllers
                     if (entrenador.Pociones.Count == 0)
                     {
                         // Si el entrenador no tiene pociones, se muestra un mensaje
-                        Console.WriteLine("No tienes pociones para usar!");
+                        ConsolaUtil.escribir("No tienes pociones para usar!\n");
                         ConsolaUtil.EsperaryLimpiar();
                         continue;
                     }
@@ -130,7 +127,7 @@ namespace Pokedex.Controllers
                         {
                             Console.WriteLine($"{i + 1}. {entrenador.Pociones[i].Nombre} - Efecto: {entrenador.Pociones[i].Efecto}");
                         }
-                        Console.WriteLine("Selecciona una pocion!");
+                        ConsolaUtil.escribir("Selecciona una pocion!\n");
                         try
                         {
                             // Se selecciona la poción
@@ -138,10 +135,30 @@ namespace Pokedex.Controllers
 
                             // Se valida la selección de la poción
                             var pocionSeleccionada = entrenador.Pociones[seleccionPocion];
+                            object locker = new object();
+                            int left = Console.CursorLeft;
+                            int top = Console.CursorTop;
+                            Thread curacion = new Thread(() =>
+                            {
+                                ConsolaUtil.escribir($"Curando a {aliado.Nombre}...\n");
+                                lock (locker)
+                                {
+                                    Console.SetCursorPosition(left, top);
+                                    Console.Write(new string(' ', 30)); // Limpia la línea
+                                    Console.SetCursorPosition(left, top);
+                                    // Simula el tiempo de curación
+                                    for (int i = 0; i < pocionSeleccionada.Efecto; i++)
+                                    {
+                                        Console.Write($"Salud actual: {aliado.HP + i}");
+                                        Thread.Sleep(10);
+                                    }
+                                }
+                            });
+                            curacion.Start();
                             aliado.HP += pocionSeleccionada.Efecto;
-                            Console.WriteLine($"{aliado.Nombre} ha usado {pocionSeleccionada.Nombre} y ha recuperado {pocionSeleccionada.Efecto} puntos de vida!");
+                            ConsolaUtil.escribir($"{aliado.Nombre} ha usado {pocionSeleccionada.Nombre} y ha recuperado {pocionSeleccionada.Efecto} puntos de vida!\n");
                             entrenador.Pociones.Remove(pocionSeleccionada);
-                            Console.WriteLine($"Pociones restantes: {entrenador.Pociones.Count}");
+                            ConsolaUtil.escribir($"Pociones restantes: {entrenador.Pociones.Count}\n");
                             ConsolaUtil.EsperaryLimpiar();
                         }
                         catch (FormatException)
@@ -166,13 +183,13 @@ namespace Pokedex.Controllers
                     // 50% de probabilidad de escapar
                     if (new Random().NextDouble() < 0.5)
                     {
-                        Console.WriteLine($"{aliado.Nombre} ha huido de la batalla exitosamente!");
+                        ConsolaUtil.escribir($"{aliado.Nombre} ha huido de la batalla exitosamente!\n");
                         ConsolaUtil.EsperaryLimpiar();
                         return;
                     }
                     else
                     {
-                        Console.WriteLine($"{aliado.Nombre} intentó huir, pero no lo logró!");
+                        ConsolaUtil.escribir($"{aliado.Nombre} intentó huir, pero no lo logró!\n");
                         ConsolaUtil.EsperaryLimpiar();
                         // La batalla continúa
                     }
@@ -182,19 +199,19 @@ namespace Pokedex.Controllers
                     ConsolaUtil.LimpiarConsola();
                     // El usuario elige capturar al Pokémon enemigo
                     AsciiView.Textos(7);
-                    Console.WriteLine($"¡{entrenador.Nombre} está intentando capturar a {enemigo.Nombre}!");
+                    ConsolaUtil.escribir($"¡{entrenador.Nombre} está intentando capturar a {enemigo.Nombre}!\n");
                     // Se elige una Pokébola
                     if (entrenador.Pokebolas.Count == 0)
                     {
-                        Console.WriteLine("No tienes Pokébolas para capturar Pokémon.");
+                        ConsolaUtil.escribir("No tienes Pokébolas para capturar Pokémon.\n");
                         continue;
                     } else
                     {
                         for (int i = 0; i < entrenador.Pokebolas.Count; i++)
                         {
-                            Console.WriteLine($"{i + 1}. {entrenador.Pokebolas[i].Nombre} - Tipo: {entrenador.Pokebolas[i].Tipo} - Efecto de captura: {entrenador.Pokebolas[i].EfectoCaptura}");
+                            ConsolaUtil.escribir($"{i + 1}. {entrenador.Pokebolas[i].Nombre} - Tipo: {entrenador.Pokebolas[i].Tipo} - Efecto de captura: {entrenador.Pokebolas[i].EfectoCaptura}\n");
                         }
-                        Console.WriteLine("¡Selecciona una Pokébola para capturar!");
+                        ConsolaUtil.escribir("¡Selecciona una Pokébola para capturar!\n\n");
                         int seleccionPokebola = -1;
                         try
                         {
@@ -203,14 +220,14 @@ namespace Pokedex.Controllers
                             if (new Random().Next(0, 250) < pokebolaSeleccionada.EfectoCaptura)
                             {
                                 PokemonView.VerPokemon(enemigo);
-                                Console.WriteLine($"¡{entrenador.Nombre} ha capturado a {enemigo.Nombre} con {pokebolaSeleccionada.Nombre}!");
+                                ConsolaUtil.escribir($"¡{entrenador.Nombre} ha capturado a {enemigo.Nombre} con {pokebolaSeleccionada.Nombre}!\n");
                                 entrenador.Equipo.Add(enemigo);
                                 ConsolaUtil.EsperaryLimpiar();
                                 return; // Termina la batalla si se captura al Pokémon
                             }
                             else
                             {
-                                Console.WriteLine($"¡{entrenador.Nombre} ha fallado al capturar a {enemigo.Nombre}!");
+                                ConsolaUtil.escribir($"¡{entrenador.Nombre} ha fallado al capturar a {enemigo.Nombre}!\n");
                                 ConsolaUtil.EsperaryLimpiar();
                             }
                         }
