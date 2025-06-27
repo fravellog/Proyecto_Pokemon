@@ -84,11 +84,13 @@ while (true)
     }
     else if (opcion == 2)
     {
-        Console.Clear();
+        ConsolaUtil.LimpiarConsola();
+        AsciiView.Textos(4);
         ConsolaUtil.escribir("Explorando el mundo...\n");
         ConsolaUtil.mostrarCarga();
 
-        if (new Random().NextDouble() < 0.5)
+        //simularlo en un controlador
+        if (new Random().NextDouble() < 0.7)
         {
             Console.WriteLine("¡Has encontrado un Pokémon salvaje!");
             var ListaPokemon = PokemonData.ListaPokemon();

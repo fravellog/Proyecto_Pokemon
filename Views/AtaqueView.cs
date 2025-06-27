@@ -15,7 +15,6 @@ namespace Pokedex.Views
                     Thread.Sleep(500);
                 }
                 FrameView.FuegoFrame();
-                ConsolaUtil.LimpiarConsola();
             }
             else if (ataque.Tipo == TipoNaturaleza.Agua)
             {

@@ -1,8 +1,9 @@
+using Pokedex.Utils;
 namespace Pokedex.Views
 {
-    public class FrameView
-    {
-        static string[] fuegoAnimacion = new string[] {
+  public class FrameView
+  {
+    static string[] fuegoAnimacion = new string[] {
 @"                                                                                
                                                                                 
                                                                                 
@@ -136,23 +137,27 @@ namespace Pokedex.Views
                         (((((######%%%%%%%#####(((((((((                        
 "};
 
-        public static void FuegoFrame()
+    public static void FuegoFrame()
+    {
+      object locker = new object();
+      Thread animacion_fuego = new Thread(() =>
+      {
+        int contador = 0;
+        while (contador < 5)
         {
-            Thread animacion_fuego = new Thread(() =>
+          contador++;
+          lock (locker)
+          {
+            foreach (string frame in fuegoAnimacion)
             {
-              int contador = 0;
-              while (contador < 5)
-              {
-                contador++;
-                foreach (string frame in fuegoAnimacion)
-                {
-                  Console.Clear();
-                  Console.Write(frame);
-                  Thread.Sleep(100);
-                }
-              }
-            });
-            animacion_fuego.Start();
+              Console.SetCursorPosition(0, 0);
+              Console.Write(frame);
+              Thread.Sleep(100);
+            }
+          }
         }
+      });
+      animacion_fuego.Start();
     }
+  }
 }

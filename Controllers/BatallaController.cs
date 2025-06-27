@@ -14,9 +14,9 @@ namespace Pokedex.Controllers
             ConsolaUtil.LimpiarConsola();
             //Seleccionar Pokemon antes de la batalla
             //Presentacion de la batalla
-            AsciiView.Textos(4);
-            Console.WriteLine(@$"¡LA BATALLA HA COMENZADO!
-            ¡{aliado.Nombre} VS {enemigo.Nombre}!");
+            AsciiView.Textos(5);
+            ConsolaUtil.escribir($"¡LA BATALLA HA COMENZADO!\n");
+            ConsolaUtil.escribir($"¡{aliado.Nombre} VS {enemigo.Nombre}!\n");
             ConsolaUtil.EsperaryLimpiar();
 
             // Comienza el bucle de batalla
@@ -64,7 +64,7 @@ namespace Pokedex.Controllers
                 if (opcion == 1)
                 {
                     ConsolaUtil.LimpiarConsola();
-                    AsciiView.Textos(5);
+                    AsciiView.Textos(6);
                     // Si el usuario elige atacar, se procede a seleccionar un ataque
                     Console.WriteLine("Selecciona un numero para elegir un ataque!");
                     Console.WriteLine();
@@ -104,9 +104,9 @@ namespace Pokedex.Controllers
 
                     // Se aplica el daño a los Pokémon
                     enemigo.HP -= potenciaAliado;
-                    AtaqueView.AtaqueVista(aliado.Ataques[seleccionAtaque]);
                     Console.WriteLine($"{aliado.Nombre} ataca a {enemigo.Nombre} con {aliado.Ataques[seleccionAtaque].Nombre}!");
                     Console.WriteLine($"{enemigo.Nombre} recibe {potenciaAliado} de daño!!");
+                    AtaqueView.AtaqueVista(aliado.Ataques[seleccionAtaque]);
                     ConsolaUtil.EsperaryLimpiar();
                 }
                 else if (opcion == 2)
@@ -125,7 +125,7 @@ namespace Pokedex.Controllers
                         // Si el usuario elige usar una poción, se muestra la lista de pociones
                         for (int i = 0; i < entrenador.Pociones.Count; i++)
                         {
-                            Console.WriteLine($"{i + 1}. {entrenador.Pociones[i].Nombre} - Efecto: {entrenador.Pociones[i].Efecto}");
+                            ConsolaUtil.escribir($"{i + 1}. {entrenador.Pociones[i].Nombre} - Efecto: {entrenador.Pociones[i].Efecto}\n");
                         }
                         ConsolaUtil.escribir("Selecciona una pocion!\n");
                         try
@@ -136,29 +136,25 @@ namespace Pokedex.Controllers
                             // Se valida la selección de la poción
                             var pocionSeleccionada = entrenador.Pociones[seleccionPocion];
                             object locker = new object();
-                            int left = Console.CursorLeft;
-                            int top = Console.CursorTop;
                             Thread curacion = new Thread(() =>
                             {
                                 ConsolaUtil.escribir($"Curando a {aliado.Nombre}...\n");
                                 lock (locker)
                                 {
-                                    Console.SetCursorPosition(left, top);
-                                    Console.Write(new string(' ', 30)); // Limpia la línea
-                                    Console.SetCursorPosition(left, top);
                                     // Simula el tiempo de curación
                                     for (int i = 0; i < pocionSeleccionada.Efecto; i++)
                                     {
-                                        Console.Write($"Salud actual: {aliado.HP + i}");
-                                        Thread.Sleep(10);
+                                        Console.SetCursorPosition(0, 0);
+                                        aliado.HP += 1; 
+                                        Console.Write($"Salud actual: {aliado.HP}");
+                                        Thread.Sleep(500);
                                     }
                                 }
                             });
-                            curacion.Start();
-                            aliado.HP += pocionSeleccionada.Efecto;
                             ConsolaUtil.escribir($"{aliado.Nombre} ha usado {pocionSeleccionada.Nombre} y ha recuperado {pocionSeleccionada.Efecto} puntos de vida!\n");
                             entrenador.Pociones.Remove(pocionSeleccionada);
                             ConsolaUtil.escribir($"Pociones restantes: {entrenador.Pociones.Count}\n");
+                            curacion.Start();
                             ConsolaUtil.EsperaryLimpiar();
                         }
                         catch (FormatException)
@@ -205,7 +201,8 @@ namespace Pokedex.Controllers
                     {
                         ConsolaUtil.escribir("No tienes Pokébolas para capturar Pokémon.\n");
                         continue;
-                    } else
+                    }
+                    else
                     {
                         for (int i = 0; i < entrenador.Pokebolas.Count; i++)
                         {
@@ -258,9 +255,9 @@ namespace Pokedex.Controllers
                 double potenciaEnemigo = AtaquePotencia.CalcularPotencia(enemigo, aliado);
                 potenciaEnemigo *= enemigo.Ataques[seleccionAtaque2].Poder;
                 aliado.HP -= potenciaEnemigo;
+                ConsolaUtil.escribir($"{enemigo.Nombre} ataca a {aliado.Nombre} con {enemigo.Ataques[seleccionAtaque2].Nombre}!\n");
+                ConsolaUtil.escribir($"{aliado.Nombre} recibe {potenciaEnemigo} de daño!!\n");
                 AtaqueView.AtaqueVista(enemigo.Ataques[seleccionAtaque2]);
-                Console.WriteLine($"{enemigo.Nombre} ataca a {aliado.Nombre} con {enemigo.Ataques[seleccionAtaque2].Nombre}!");
-                Console.WriteLine($"{aliado.Nombre} recibe {potenciaEnemigo} de daño!!"); 
                 ConsolaUtil.EsperaryLimpiar();
             }
 
