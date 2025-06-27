@@ -140,15 +140,17 @@ namespace Pokedex.Views
         {
             Thread animacion_fuego = new Thread(() =>
             {
-                while (true)
+              int contador = 0;
+              while (contador < 5)
+              {
+                contador++;
+                foreach (string frame in fuegoAnimacion)
                 {
-                    foreach (string frame in fuegoAnimacion)
-                    {
-                        Console.Clear();
-                        Console.Write(frame);
-                        Thread.Sleep(100);
-                    }
+                  Console.Clear();
+                  Console.Write(frame);
+                  Thread.Sleep(100);
                 }
+              }
             });
             animacion_fuego.Start();
         }
