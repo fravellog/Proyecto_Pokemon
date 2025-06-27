@@ -1,3 +1,4 @@
+using Pokedex.Utils;
 namespace Pokedex.Models
 {
     public class Pokebola
@@ -14,8 +15,8 @@ namespace Pokedex.Models
         }
         public void MostrarPokebola()
         {
-            Console.WriteLine($"Nombre: {Nombre}");
-            Console.WriteLine($"Tipo: {Tipo}");
+            ConsolaUtil.escribir($"Nombre: {Nombre}\n");
+            ConsolaUtil.escribir($"Tipo: {Tipo}\n");
         }
     }
 }

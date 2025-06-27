@@ -1,4 +1,5 @@
-namespace Pokedex.Models 
+using Pokedex.Utils;
+namespace Pokedex.Models
 {
     public class Pokemon
     {
@@ -21,30 +22,30 @@ namespace Pokedex.Models
         }
         public void MostrarEquipo()
         {
-            Console.WriteLine($"Especie: {Especie}");
-            Console.WriteLine($"Apodo: {Nombre}");
-            Console.WriteLine($"Tipo: {Tipo}");
-            Console.WriteLine($"HP: {HP}");
-            Console.WriteLine("Ataques:");
+            ConsolaUtil.escribir($"Especie: {Especie}\n");
+            ConsolaUtil.escribir($"Apodo: {Nombre}\n");
+            ConsolaUtil.escribir($"Tipo: {Tipo}\n");
+            ConsolaUtil.escribir($"HP: {HP}\n");
+            ConsolaUtil.escribir("Ataques:\n");
             int contador = 1;
             foreach (var ataque in Ataques)
             {
-                Console.WriteLine($"{contador}- {ataque.Nombre} ({ataque.Tipo})");
+                ConsolaUtil.escribir($"{contador}- {ataque.Nombre} ({ataque.Tipo})\n");
                 contador++;
             }
         }
 
         public void MostrarPokemon()
         {
-            Console.WriteLine($"Especie: {Especie}");
-            Console.WriteLine($"Tipo: {Tipo}");
-            Console.WriteLine($"HP: {HP}");
-            Console.WriteLine("Ataques:");
+            ConsolaUtil.escribir($"Especie: {Especie}\n");
+            ConsolaUtil.escribir($"Tipo: {Tipo}\n");
+            ConsolaUtil.escribir($"HP: {HP}\n");
+            ConsolaUtil.escribir("Ataques:\n");
             foreach (var ataque in Ataques)
             {
-                Console.WriteLine($"- {ataque.Nombre} ({ataque.Tipo})");
+                Console.WriteLine($"- {ataque.Nombre} ({ataque.Tipo})\n");
             }
         }
     }
-    
+
 }

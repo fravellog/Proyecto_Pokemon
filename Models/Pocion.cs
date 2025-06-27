@@ -1,7 +1,9 @@
-namespace Pokedex.Models 
+using Pokedex.Utils;
+namespace Pokedex.Models
 {
 
-    public class Pocion {
+    public class Pocion
+    {
         public string Nombre;
         public string TipoEfecto;
         public int Efecto;
@@ -12,10 +14,10 @@ namespace Pokedex.Models
             TipoEfecto = tipo_efecto;
             Efecto = efecto;
         }
-        public void MostrarPocion() {
-            Console.WriteLine(@$"Nombre: {Nombre}
-            
-            Efecto: {TipoEfecto}");
+        public void MostrarPocion()
+        {
+            ConsolaUtil.escribir($"Nombre: {Nombre}\n");
+            ConsolaUtil.escribir($"Efecto: {TipoEfecto}\n");
 
         }
     }
