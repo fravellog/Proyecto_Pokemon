@@ -8,12 +8,12 @@ namespace Pokedex.Controllers
     {
         public static void comprarPokebola(Entrenador entrenador)
         {
-            ConsolaUtil.LimpiarConsola();
-            AsciiView.Textos(8);
-            ConsolaUtil.escribir("Bienvenido a la tienda de Pokebolas!\n");
-            ConsolaUtil.escribir("En esta sección puede seleccionar la Pokebola que desea almacenar (MAX. 5)!\n\n");
             while (true)
             {
+                ConsolaUtil.LimpiarConsola();
+                AsciiView.Textos(8);
+                ConsolaUtil.escribir("Bienvenido a la tienda de Pokebolas!\n");
+                ConsolaUtil.escribir("En esta sección puede seleccionar la Pokebola que desea almacenar (MAX. 5)!\n\n");
                 ConsolaUtil.escribir("1. Pokebola\n");
                 ConsolaUtil.escribir("2. Superbola\n");
                 ConsolaUtil.escribir("3. Ultrabola\n");
@@ -29,6 +29,7 @@ namespace Pokedex.Controllers
                     {
                         if (seleccionPokebola == 4)
                         {
+                            ConsolaUtil.LimpiarConsola();
                             ConsolaUtil.escribir("¡Gracias por visitar la tienda de Pokebolas!\n");
                             ConsolaUtil.EsperaryLimpiar();
                             break;
@@ -47,13 +48,14 @@ namespace Pokedex.Controllers
                     Console.WriteLine("Por favor, seleccione una Pokebola válida.");
                     continue;
                 }
-
+                ConsolaUtil.LimpiarConsola();
                 PokebolaData.Pokebolas[seleccionPokebola].MostrarPokebola();
                 ConsolaUtil.escribir("¿Es correcto? (S/N)\n");
                 string confirmacion = Console.ReadLine();
 
                 if (confirmacion.ToUpper() == "S" && entrenador.Pokebolas.Count < 5)
                 {
+                    ConsolaUtil.LimpiarConsola();
                     entrenador.agregarPokebola(PokebolaData.Pokebolas[seleccionPokebola]);
                     ConsolaUtil.escribir($"¡Has comprado una {PokebolaData.Pokebolas[seleccionPokebola].Nombre}!\n");
                     ConsolaUtil.escribir($"Ahora tienes {entrenador.Pokebolas.Count} Pokebolas en tu inventario.\n");
@@ -61,10 +63,14 @@ namespace Pokedex.Controllers
                 }
                 else if (confirmacion.ToUpper() == "N")
                 {
+                    ConsolaUtil.LimpiarConsola();
                     ConsolaUtil.escribir("¡Intenta de nuevo!\n");
+                    ConsolaUtil.EsperaryLimpiar();
+                    continue;
                 }
                 else if (confirmacion.ToUpper() == "S" && entrenador.Pokebolas.Count == 5)
                 {
+                    ConsolaUtil.LimpiarConsola();
                     ConsolaUtil.escribir("¡No puedes llevar más Pokebolas!\n");
                     ConsolaUtil.EsperaryLimpiar();
                     continue;

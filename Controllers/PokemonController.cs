@@ -10,11 +10,12 @@ namespace Pokedex.Controllers
     {
         public void pokemonInicial(Entrenador entrenador)
         {
-            ConsolaUtil.LimpiarConsola();
-            AsciiView.Textos(3);
-            ConsolaUtil.escribir("¡Muy bien, es momento de elegir tu pokemon inicial!\n\n");
             while (true)
             {
+                ConsolaUtil.LimpiarConsola();
+                AsciiView.Textos(3);
+                ConsolaUtil.escribir("¡Muy bien, es momento de elegir tu pokemon inicial!\n\n");
+                ConsolaUtil.LimpiarConsola();
                 ConsolaUtil.escribir("1. Charmander\n");
                 ConsolaUtil.escribir("2. Squirtle\n");
                 ConsolaUtil.escribir("3. Bulbasaur\n");
@@ -27,6 +28,7 @@ namespace Pokedex.Controllers
                     seleccionPokemon = int.Parse(Console.ReadLine()) - 1;
                     if (seleccionPokemon + 1 < 0 || seleccionPokemon + 1 > 3)
                     {
+                        ConsolaUtil.LimpiarConsola();
                         Console.WriteLine("Por favor, seleccione un pokemon válido.");
                         continue;
                     }
@@ -34,14 +36,15 @@ namespace Pokedex.Controllers
                 }
                 catch (FormatException)
                 {
+                    ConsolaUtil.LimpiarConsola();
                     Console.WriteLine("Por favor, ingrese un número válido.");
                     continue;
                 }
                 catch (ArgumentOutOfRangeException)
                 {
+                    ConsolaUtil.LimpiarConsola();
                     Console.WriteLine("Por favor, seleccione un pokemon válido.");
                     continue;
-
                 }
                 ConsolaUtil.LimpiarConsola();
                 PokemonView.VerPokemon(PokemonData.ListaPokemon()[seleccionPokemon]);
@@ -50,6 +53,7 @@ namespace Pokedex.Controllers
                 string confirmacion = Console.ReadLine();
                 if (confirmacion.ToUpper() == "S")
                 {
+                    ConsolaUtil.LimpiarConsola();
                     Pokemon pokemonElegido = PokemonData.ListaPokemon()[seleccionPokemon];
                     ConsolaUtil.escribir($"¡Has elegido a {pokemonElegido.Nombre} como tu pokemon inicial!\n");
                     entrenador.agregarPokemon(pokemonElegido);
@@ -57,11 +61,13 @@ namespace Pokedex.Controllers
                 }
                 else if (confirmacion.ToUpper() == "N")
                 {
+                    ConsolaUtil.LimpiarConsola();
                     Console.WriteLine("¡Intenta de nuevo!");
                     continue;
                 }
                 else
                 {
+                    ConsolaUtil.LimpiarConsola();
                     Console.WriteLine("Opción no válida. Por favor, elige S o N.");
                     continue;
                 }
@@ -71,13 +77,13 @@ namespace Pokedex.Controllers
         {
             ConsolaUtil.mostrarCarga();
             ConsolaUtil.LimpiarConsola();
-            Console.WriteLine("¡Es momento de ponerle un apodo a tu pokemon!");
+            ConsolaUtil.escribir("¡Es momento de ponerle un apodo a tu pokemon!\n");
             while (true)
             {
-                Console.WriteLine("Selecciona el pokemon al que le quieres poner un apodo:");
+                ConsolaUtil.escribir("Selecciona el pokemon al que le quieres poner un apodo:");
                 for (int i = 0; i < entrenador.Equipo.Count; i++)
                 {
-                    Console.WriteLine($"{i + 1}. {entrenador.Equipo[i].Nombre}");
+                    ConsolaUtil.escribir($"{i + 1}. {entrenador.Equipo[i].Nombre}\n");
                 }
 
                 int seleccionPokemon = -1;
