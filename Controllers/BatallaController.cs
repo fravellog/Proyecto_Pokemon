@@ -121,7 +121,7 @@ namespace Pokedex.Controllers
                     else
                     {
                         ConsolaUtil.LimpiarConsola();
-                        AsciiView.Textos(6);
+                        AsciiView.Textos(7);
                         // Si el usuario elige usar una poción, se muestra la lista de pociones
                         for (int i = 0; i < entrenador.Pociones.Count; i++)
                         {
@@ -194,7 +194,7 @@ namespace Pokedex.Controllers
                 {
                     ConsolaUtil.LimpiarConsola();
                     // El usuario elige capturar al Pokémon enemigo
-                    AsciiView.Textos(7);
+                    AsciiView.Textos(8);
                     ConsolaUtil.escribir($"¡{entrenador.Nombre} está intentando capturar a {enemigo.Nombre}!\n");
                     // Se elige una Pokébola
                     if (entrenador.Pokebolas.Count == 0)
@@ -265,23 +265,23 @@ namespace Pokedex.Controllers
 
             ConsolaUtil.LimpiarConsola();
             // Fin de la batalla
-            Console.WriteLine($"{aliado.Nombre} VS {enemigo.Nombre}");
-            Console.WriteLine("¡La batalla ha terminado!");
+            ConsolaUtil.escribir($"{aliado.Nombre} VS {enemigo.Nombre}\n");
+            ConsolaUtil.escribir("¡La batalla ha terminado!\n");
             ConsolaUtil.EsperaryLimpiar();
             if (aliado.HP <= 0 && enemigo.HP <= 0)
             {
-                Console.WriteLine("¡Ambos Pokémon han caído!");
+                ConsolaUtil.escribir("¡Ambos Pokémon han caído!\n");
                 ConsolaUtil.EsperaryLimpiar();
             }
             else if (aliado.HP <= 0)
             {
-                Console.WriteLine($"{enemigo.Nombre} ha ganado la batalla!, mejor suerte la proxima vez!");
+                ConsolaUtil.escribir($"{enemigo.Nombre} ha ganado la batalla!, mejor suerte la proxima vez!\n");
                 ConsolaUtil.EsperaryLimpiar();
             }
             else
             {
-                AsciiView.Textos(8);
-                Console.WriteLine($"{aliado.Nombre} ha ganado la batalla!, felicidades!");
+                AsciiView.Textos(9);
+                ConsolaUtil.escribir($"{aliado.Nombre} ha ganado la batalla!, felicidades!\n");
                 ConsolaUtil.EsperaryLimpiar();
             }
 

@@ -9,7 +9,7 @@ namespace Pokedex.Controllers
         public static void comprarPokebola(Entrenador entrenador)
         {
             ConsolaUtil.LimpiarConsola();
-            AsciiView.Textos(7);
+            AsciiView.Textos(8);
             ConsolaUtil.escribir("Bienvenido a la tienda de Pokebolas!\n");
             ConsolaUtil.escribir("En esta sección puede seleccionar la Pokebola que desea almacenar (MAX. 5)!\n\n");
             while (true)
