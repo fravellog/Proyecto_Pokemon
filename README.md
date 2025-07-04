@@ -1,6 +1,6 @@
 # Bienvenido jugador!
 
-## Aqui estan las instrucciones sobre como jugar Pokemon desde Visual Studio Code!
+## Aqui estan las instrucciones sobre como jugar Pokemon desde Visual Studio Code
 
 ## antes de ejecutar el codigo, asegurate de revisar cual es tu version de .NET, para eso:
 
@@ -10,8 +10,12 @@
 
 3. guarda los cambios.
 
-## Luego de eso, puedes ejecutar el codigo:
+## Luego de eso, puedes ejecutar el codigo abriendo el terminal y escribir "dotnet run".
 
-1. Abre el terminal de Visual Studio Code.
+# ¿Que funciones tiene?
 
-2. En el terminal, escribe el comando "dotnet run" sin las comillas.
+Dentro del juego se tiene una gran variacion de opciones, tales como asignarse un nombre, seleccionar un pokemon inicial, entre otras mas.
+Cada menu utiliza numeros para seleccionar las opciones, en caso de que no se ingrese el dato correspondiente los try-catch evitaran que salte un error.
+
+Esta es una version temprana del codigo, en otras ramas se estan trabajando en nuevas funciones que permitiran que la ejecucion sea mas fluida,
+tales como la implementacion de hilos, locks, entre otros.
