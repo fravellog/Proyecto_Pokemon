@@ -18,4 +18,4 @@ Dentro del juego se tiene una gran variacion de opciones, tales como asignarse u
 Cada menu utiliza numeros para seleccionar las opciones, en caso de que no se ingrese el dato correspondiente los try-catch evitaran que salte un error.
 
 Esta es una version temprana del codigo, en otras ramas se estan trabajando en nuevas funciones que permitiran que la ejecucion sea mas fluida,
-tales como la implementacion de hilos, locks, entre otros.
+tales como la implementacion de animacion con hilos, locks, entre otros.
