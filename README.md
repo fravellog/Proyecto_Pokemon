@@ -15,3 +15,13 @@
 1. Abre el terminal de Visual Studio Code.
 
 2. En el terminal, escribe el comando "dotnet run" sin las comillas.
+
+## cambios a tomar en cuenta:
+
+-Visualizacion de datos (limpieza de consola por cada interaccion, separacion de listados, escribir en un solo texto).
+
+-Temporizador de turnos en batallaController (limite de tiempo en realizar una accion, mismo para el contrincante con un randomizador).
+
+-Mejorar el README en las ramas correspondientes (explicar mejor cada apartado del codigo).
+
+-Cambiar el numero de probabilidad en las pokebolas (del 1 al 100).
